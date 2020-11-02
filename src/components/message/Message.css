@@ -1,0 +1,26 @@
+.individualMessageContainer {
+  display: flex;
+  width: 100%;
+  margin: 1em;
+  border-top: 1px solid #59405c
+}
+.individualAvatarContainer {
+  margin: 0 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.individualRightContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.messageTopBar {
+  display: flex;
+  justify-content: space-between;
+  /* margin-bottom: 1em; */
+}
+.pinned {
+  color: red;
+  /* background-color: red; */
+}

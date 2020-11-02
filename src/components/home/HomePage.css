@@ -1,0 +1,14 @@
+
+.hidden {
+  display: none;
+}
+.selectedChat {
+  border-left: 4px solid #59405c;
+}
+.hideScroll::-webkit-scrollbar {
+  display: none;
+}
+.hideScroll {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}

@@ -1,0 +1,30 @@
+.splash{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+  background-color: #4b5d67;
+}
+.splashText{
+  font-family: 'Lemonada', cursive;
+  font-size: 5rem;
+  text-align: center;
+  cursor: pointer;
+  color: #322f3d;
+  margin: auto
+}
+.splashText:hover{
+  color: #59405c;
+}
+.splashTextContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+}
+.input {
+  font-size: large;
+}
