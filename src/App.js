@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SplashContainer from './components/splash/SplashContainer';
+import Splash from './components/Splash';
 import HomePageContainer from './components/home/HomePageContainer';
 import ProtectedRoute from './components/ProtectedRoute';
 import { loadToken } from './store/authentication';
@@ -56,15 +57,15 @@ const App = ({ socket }) => {
 
   if (!loaded) return null;
   return (
-  <HashRouter>
+  <BrowserRouter>
     <SocketContext.Provider value={socket}>
         <Switch>
           <ProtectedRoute isLoggedIn={token} path='/' exact={ true } component={ HomePageContainer } />
           <ProtectedRoute isLoggedIn={token} path='/profile' exact={ true } component={ ProfileContainer } />
-          <Route path='/*' exact={ true } component={ SplashContainer } />
+          <Route path='/*' exact={ true } component={ Splash } />
         </Switch>
     </SocketContext.Provider>
-  </HashRouter>
+  </BrowserRouter>
   )
 }
 
