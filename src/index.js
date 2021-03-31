@@ -13,12 +13,7 @@ import { baseUrl } from "./config/config";
 import { socketUrl } from './config/config'
 import io from "socket.io-client";
 //Socket.io
-const socket = io({socketUrl}, {
-  withCredentials: true,
-  extraHeaders: {
-    "my-custom-header": "abcd"
-  }
-});
+const socket = io.connect(socketUrl);
 
 socket.on('error', (error) => {
   console.error(error);
