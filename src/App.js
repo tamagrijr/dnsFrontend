@@ -59,9 +59,9 @@ const App = ({ socket }) => {
   <BrowserRouter>
     <SocketContext.Provider value={socket}>
         <Switch>
-          <ProtectedRoute isLoggedIn={token} path='/' exact={ true } component={ HomePageContainer } />
-          <ProtectedRoute isLoggedIn={token} path='/profile' exact={ true } component={ ProfileContainer } />
-          <Route path='/*' exact={ true } component={ SplashContainer } />
+          <ProtectedRoute isLoggedIn={token} path='/dnsFrontend' exact={ true } component={ HomePageContainer } />
+          <ProtectedRoute isLoggedIn={token} path='/dnsFrontend/profile' exact={ true } component={ ProfileContainer } />
+          <Route path='/dnsFrontend/*' exact={ true } component={ SplashContainer } />
         </Switch>
     </SocketContext.Provider>
   </BrowserRouter>
