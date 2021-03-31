@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/dnsFrontend/static/css/main.be952c64.chunk.css",
-    "main.js": "/dnsFrontend/static/js/main.fb8b8546.chunk.js",
-    "main.js.map": "/dnsFrontend/static/js/main.fb8b8546.chunk.js.map",
+    "main.js": "/dnsFrontend/static/js/main.ddb6df56.chunk.js",
+    "main.js.map": "/dnsFrontend/static/js/main.ddb6df56.chunk.js.map",
     "runtime-main.js": "/dnsFrontend/static/js/runtime-main.30e15b0a.js",
     "runtime-main.js.map": "/dnsFrontend/static/js/runtime-main.30e15b0a.js.map",
     "static/js/2.044ed625.chunk.js": "/dnsFrontend/static/js/2.044ed625.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.30e15b0a.js",
     "static/js/2.044ed625.chunk.js",
     "static/css/main.be952c64.chunk.css",
-    "static/js/main.fb8b8546.chunk.js"
+    "static/js/main.ddb6df56.chunk.js"
   ]
 }
