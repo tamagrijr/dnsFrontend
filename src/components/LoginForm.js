@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { login } from '../store/authentication';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -80,9 +80,11 @@ const LoginForm = ({ props }) => {
           </form>
         </DialogContent>
         <DialogActions>
-          <Button autoFocus onClick={props.handleClose} color="primary">
-            Sign In
-          </Button>
+          <Link to='/'>
+            <Button autoFocus onClick={props.handleClose} color="primary">
+              Sign In
+            </Button>
+          </Link>
         </DialogActions>
       </Dialog>
     </main>
