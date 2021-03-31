@@ -36,7 +36,7 @@ const LoginForm = ({ props }) => {
   };
 
   if (token) {
-    return <Redirect to='/' />;
+    return <Redirect to='/dnsFrontend' />;
   }
 
   return (

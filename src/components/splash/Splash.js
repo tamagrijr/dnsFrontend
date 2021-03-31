@@ -62,7 +62,7 @@ export default function Splash() {
   };
 
   if (token) {
-    return <Redirect to='/' />;
+    return <Redirect to='/dnsFrontend' />;
   }
 
   const handleClickOpen = () => {
