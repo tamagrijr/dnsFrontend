@@ -7,49 +7,50 @@ import Login from '../images/Login.png';
 import DungeonBackground from '../images/DungeonBackground.jpg';
 import DungeonConstruction from '../images/DungeonConstruction.png';
 import underConstruction from '../images/underConstruction.png';
-import { DungeonsAndSlack, DungeonDemo } from '../images/baseSixtyFour';
+import DungeonDemo from '../images/DungeonDemo.png';
+import { DungeonsAndSlack } from '../images/baseSixtyFour';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 
 export default function Splash() {
   const [showIntro, setShowIntro] = useState(true);
-  useEffect(() => void setTimeout(() => setShowIntro(false), 30000), []);
+  useEffect(() => void setTimeout(() => setShowIntro(false), 15000), []);
 
   return (
     <>
-      {showIntro ?
 
-        <IntroPage onClick={() => setShowIntro(false)}>
-          <SmokeText w={850} h={800} baseSixtyFour={DungeonsAndSlack} />
-        </IntroPage> :
+      {showIntro && 
+      <IntroPage onClick={() => setShowIntro(false)} className="animate__animated animate__fadeOut animate__delay-5s">
+        <SmokeText w={650} h={600} baseSixtyFour={DungeonsAndSlack} id={'DnS'} />
+      </IntroPage>}
 
-        <SplashPage>
-          <TopBar>
-            <NavBox>
-              <img src={DnS} />
-            </NavBox>
-            <NavBox style={{cursor: 'pointer'}}>
-              <img src={Login} />
-            </NavBox>
-          </TopBar>
-          <Overlap src={DungeonConstruction} z={2} />
-          <Overlap src={underConstruction} z={1} />
-          <Bounce>
-            <SmokeText w={400} h={250} baseSixtyFour={DungeonDemo} />
-          </Bounce>
-          <BottomBar>
-            <NavBox>
-              <img src={Warren} />
-            </NavBox>
-            <NavBox>
-              <Icon>
-                <FiLinkedin size={'2.5em'} />
-              </Icon>
-              <Icon>
-                <FiGithub size={'2.5em'} />
-              </Icon>
-            </NavBox>
-          </BottomBar>
-        </SplashPage>}
+      <SplashPage>
+        <TopBar>
+          <NavBox>
+            <img src={DnS} />
+          </NavBox>
+          <NavBox style={{ cursor: 'pointer' }}>
+            <img src={Login} />
+          </NavBox>
+        </TopBar>
+        <Overlap src={DungeonConstruction} z={2} />
+        <Overlap src={underConstruction} z={1} />
+        <Bounce>
+          <img src={DungeonDemo} />
+        </Bounce>
+        <BottomBar>
+          <NavBox>
+            <img src={Warren} />
+          </NavBox>
+          <NavBox>
+            <Icon>
+              <FiLinkedin size={'2.5em'} />
+            </Icon>
+            <Icon>
+              <FiGithub size={'2.5em'} />
+            </Icon>
+          </NavBox>
+        </BottomBar>
+      </SplashPage>
     </>
   )
 };
@@ -122,8 +123,8 @@ cursor: pointer;
 const Bounce = styled.div`
 animation: ${bounce_animate} 2s infinite alternate;
 position: absolute;
-top: 50%;
-left: 50%;
+top: 40%;
+left:40%;
 transform: translate(-50%, -50%);
 cursor: pointer;
 `;

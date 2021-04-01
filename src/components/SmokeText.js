@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components';
 
-export default function SmokeParticle({ w, h, baseSixtyFour }) {
+export default function SmokeParticle({ w, h, baseSixtyFour, id }) {
   useEffect(() => {
     // console.log('mounted')
     const image = new Image();
@@ -9,7 +9,7 @@ export default function SmokeParticle({ w, h, baseSixtyFour }) {
     // reference site https://www.youtube.com/watch?v=UoTxOVEecbI&ab_channel=freeCodeCamp.org
     image.src = baseSixtyFour    // console.log(image.src)
     image.addEventListener('load', function () {
-      const canvas = document.getElementById('smoke-effect');
+      const canvas = document.getElementById(id);
       const ctx = canvas.getContext('2d');
       // console.log(ctx)
       canvas.width = w;
@@ -123,7 +123,7 @@ export default function SmokeParticle({ w, h, baseSixtyFour }) {
   }, []);
 
   return (
-    <Canv id='smoke-effect' w={w} h={h} />
+    <Canv id={id} w={w} h={h} />
   )
 }
 
