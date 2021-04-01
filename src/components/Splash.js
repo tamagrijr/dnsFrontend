@@ -11,6 +11,7 @@ import Login from '../images/Login.png';
 import DungeonBackground from '../images/DungeonBackground.jpg';
 import DungeonConstruction from '../images/DungeonConstruction.png';
 import underConstruction from '../images/underConstruction.png';
+import underText from '../images/Under.png';
 import DungeonDemo from '../images/DungeonDemo.png';
 import { DungeonsAndSlack } from '../images/baseSixtyFour';
 
@@ -18,8 +19,19 @@ export default function Splash() {
   const [showIntro, setShowIntro] = useState(true);
   useEffect(() => void setTimeout(() => setShowIntro(false), 16000), []);
 
+  const [constructionMessage, setConstructionMessage] = useState(true);
+  useEffect(() => {
+    let flashing = setInterval(() => {
+      setConstructionMessage(!constructionMessage)
+    }, 5000);
+    return () => clearInterval(flashing)
+  })
+
+
+
   const [email, setEmail] = React.useState('demo@email.com');
   const [password, setPassword] = React.useState('password');
+  const [loginHovered, setLoginHovered] = React.useState('')
 
   const token = useSelector((state) => state.authentication.token);
   const dispatch = useDispatch();
@@ -28,22 +40,22 @@ export default function Splash() {
     e.preventDefault();
 
     const res = dispatch(login(email, password));
-    if(!res.ok) {
+    if (!res.ok) {
       setPassword('');
       setEmail('');
     };
   };
 
   if (token) {
-    return <Redirect to='/dnsFrontend' />;
+    return <Redirect to='/' />;
   }
   return (
     <>
 
-      {showIntro && 
-      <IntroPage onClick={() => setShowIntro(false)} className="animate__animated animate__fadeOut animate__delay-5s">
-        <SmokeText w={650} h={600} baseSixtyFour={DungeonsAndSlack} id={'DnS'} />
-      </IntroPage>}
+      {showIntro &&
+        <IntroPage onClick={() => setShowIntro(false)} className="animate__animated animate__fadeOut animate__delay-5s">
+          <SmokeText w={650} h={600} baseSixtyFour={DungeonsAndSlack} id={'DnS'} />
+        </IntroPage>}
 
       <SplashPage>
         <TopBar>
@@ -51,10 +63,12 @@ export default function Splash() {
             <img src={DnS} />
           </NavBox>
           <NavBox style={{ cursor: 'pointer' }}>
-            <img src={Login} />
+            <img src={Login} className={loginHovered} onMouseEnter={() => setLoginHovered(`animate__animated animate__tada animate__infinite`)} onMouseLeave={() => setLoginHovered('')} />
           </NavBox>
         </TopBar>
-        <Overlap src={DungeonConstruction} z={2} />
+        {constructionMessage ?
+          <Overlap src={DungeonConstruction} z={2} /> :
+          <Overlap src={underText} z={2} />}
         <Overlap src={underConstruction} z={1} />
         <Bounce onClick={handleLogin} >
           <img src={DungeonDemo} />
