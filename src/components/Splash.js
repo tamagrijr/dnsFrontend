@@ -16,7 +16,7 @@ import { DungeonsAndSlack } from '../images/baseSixtyFour';
 
 export default function Splash() {
   const [showIntro, setShowIntro] = useState(true);
-  useEffect(() => void setTimeout(() => setShowIntro(false), 15000), []);
+  useEffect(() => void setTimeout(() => setShowIntro(false), 16000), []);
 
   const [email, setEmail] = React.useState('demo@email.com');
   const [password, setPassword] = React.useState('password');
