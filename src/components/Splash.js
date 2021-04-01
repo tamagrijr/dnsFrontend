@@ -16,23 +16,27 @@ import DungeonDemo from '../images/DungeonDemo.png';
 import { DungeonsAndSlack } from '../images/baseSixtyFour';
 
 export default function Splash() {
+  //Hide intro animation after set time
   const [showIntro, setShowIntro] = useState(true);
   useEffect(() => void setTimeout(() => setShowIntro(false), 16000), []);
 
+  //Alternate Under Construction Messages
   const [constructionMessage, setConstructionMessage] = useState(true);
   useEffect(() => {
     let flashing = setInterval(() => {
       setConstructionMessage(!constructionMessage)
     }, 5000);
     return () => clearInterval(flashing)
+    //To get setInterval to work had to remove dependency array(look into why)
   })
 
 
+  //set up react state (demo user pre selected)
+  const [email, setEmail] = useState('demo@email.com');
+  const [password, setPassword] = useState('password');
+  const [loginHovered, setLoginHovered] = useState('')
 
-  const [email, setEmail] = React.useState('demo@email.com');
-  const [password, setPassword] = React.useState('password');
-  const [loginHovered, setLoginHovered] = React.useState('')
-
+  //grab the token from local storage if it exists
   const token = useSelector((state) => state.authentication.token);
   const dispatch = useDispatch();
 
@@ -49,6 +53,7 @@ export default function Splash() {
   if (token) {
     return <Redirect to='/' />;
   }
+  
   return (
     <>
 
