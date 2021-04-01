@@ -1,4 +1,5 @@
 import React from 'react';
+import {Redirect} from 'react-router-dom';
 import clsx from 'clsx';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
@@ -167,6 +168,7 @@ export default function Home({ props }) {
   const [rightOpen, setRightOpen] = React.useState(false);
   const [channelsOpen, setChannelsOpen] = React.useState(true);
   const [groupsOpen, setGroupsOpen] = React.useState(true);
+  const [profile, setProfile] = React.useState(false);
   const [friendsOpen, setFriendsOpen] = React.useState(true);
   const [membersOpen, setMembersOpen] = React.useState(true);
   const [pinnedOpen, setPinnedOpen] = React.useState(true);
@@ -246,7 +248,10 @@ export default function Home({ props }) {
     setChannelFormDisplay(false);
     props.dispatchFunctions.reload();
   }
-
+  if(profile){
+    return <Redirect to='/profile' />;
+    
+  }
   return (
     <div className={classes.root}>
       <CssBaseline />
@@ -416,7 +421,7 @@ export default function Home({ props }) {
         </div>
         <Divider />
 
-          <ListItem button onClick={() => window.location.href = '/profile'}>
+          <ListItem button onClick={() => setProfile(true)}>
             <ListItemIcon>{props.user.user.avatarUrl ? <Avatar src={props.user.user.avatarUrl} className={classes.small} /> : <AccountCircleIcon />}</ListItemIcon>
             <ListItemText primary={props.user.user.userName ? props.user.user.userName : `${props.user.user.firstName} ${props.user.user.lastName}`} />
           </ListItem>

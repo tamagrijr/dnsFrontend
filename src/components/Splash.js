@@ -3,7 +3,8 @@ import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { login, signUp } from '../store/authentication';
 import styled, { keyframes } from 'styled-components';
-import SmokeText from './SmokeText';
+import SmokeText from './SmokeParticle';
+import SlideShow from './SlideShow';
 import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import Warren from '../images/Warren.png';
 import DnS from '../images/DnS.png';
@@ -19,17 +20,6 @@ export default function Splash() {
   //Hide intro animation after set time
   const [showIntro, setShowIntro] = useState(true);
   useEffect(() => void setTimeout(() => setShowIntro(false), 16000), []);
-
-  //Alternate Under Construction Messages
-  const [constructionMessage, setConstructionMessage] = useState(true);
-  useEffect(() => {
-    let flashing = setInterval(() => {
-      setConstructionMessage(!constructionMessage)
-    }, 5000);
-    return () => clearInterval(flashing)
-    //To get setInterval to work had to remove dependency array(look into why)
-  })
-
 
   //set up react state (demo user pre selected)
   const [email, setEmail] = useState('demo@email.com');
@@ -53,7 +43,7 @@ export default function Splash() {
   if (token) {
     return <Redirect to='/' />;
   }
-  
+
   return (
     <>
 
@@ -71,9 +61,9 @@ export default function Splash() {
             <img src={Login} className={loginHovered} onMouseEnter={() => setLoginHovered(`animate__animated animate__tada animate__infinite`)} onMouseLeave={() => setLoginHovered('')} />
           </NavBox>
         </TopBar>
-        {constructionMessage ?
-          <Overlap src={DungeonConstruction} z={2} /> :
-          <Overlap src={underText} z={2} />}
+        <Overlap z={2}>
+          <SlideShow images={[DungeonConstruction, underText]} w={`100%`} h={`100%`} ></SlideShow>
+        </Overlap>
         <Overlap src={underConstruction} z={1} />
         <Bounce onClick={handleLogin} >
           <img src={DungeonDemo} />
@@ -169,12 +159,14 @@ left:40%;
 transform: translate(-50%, -50%);
 cursor: pointer;
 `;
-const Overlap = styled.img`
+const Overlap = styled.div`
 position: absolute;
 top: 50%;
 left: 20%;
 height: 20%;
 width: 20%;
 transform: translate(-50%, -50%);
-${props => props.z ? `z-index: ${props.z};` : `z-index: 0;`}
+${props => props.z ? `z-index: ${props.z};` : `z-index: 0;`};
+${props => props.src ? `background-image: url(${props.src})` : ''};
+background-size: 100% 100%;
 `;

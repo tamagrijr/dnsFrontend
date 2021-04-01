@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import SplashContainer from './components/splash/SplashContainer';
-import Splash from './components/Splash';
 import HomePageContainer from './components/home/HomePageContainer';
 import ProtectedRoute from './components/ProtectedRoute';
 import { loadToken } from './store/authentication';
@@ -13,6 +12,9 @@ import { pushMessage } from './store/currentChat'
 import { chatInfo } from './store/currentChat'
 import useAsyncEffect from 'use-async-effect'
 import './index.css'
+
+import Splash from './components/Splash';
+import Profile from './components/Profile'
 
 const App = ({ socket }) => {
   const token = useSelector(state => state.authentication.token);
@@ -61,7 +63,7 @@ const App = ({ socket }) => {
     <SocketContext.Provider value={socket}>
         <Switch>
           <ProtectedRoute isLoggedIn={token} path='/' exact={ true } component={ HomePageContainer } />
-          <ProtectedRoute isLoggedIn={token} path='/profile' exact={ true } component={ ProfileContainer } />
+          <ProtectedRoute isLoggedIn={token} path='/profile' exact={ true } component={ Profile } />
           <Route path='/*' exact={ true } component={ Splash } />
         </Switch>
     </SocketContext.Provider>
