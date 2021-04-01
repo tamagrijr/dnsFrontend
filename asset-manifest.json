@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/dnsFrontend/static/css/main.521cd5db.chunk.css",
-    "main.js": "/dnsFrontend/static/js/main.03afc708.chunk.js",
-    "main.js.map": "/dnsFrontend/static/js/main.03afc708.chunk.js.map",
+    "main.js": "/dnsFrontend/static/js/main.f12f0cad.chunk.js",
+    "main.js.map": "/dnsFrontend/static/js/main.f12f0cad.chunk.js.map",
     "runtime-main.js": "/dnsFrontend/static/js/runtime-main.30e15b0a.js",
     "runtime-main.js.map": "/dnsFrontend/static/js/runtime-main.30e15b0a.js.map",
     "static/js/2.4621c587.chunk.js": "/dnsFrontend/static/js/2.4621c587.chunk.js",
@@ -20,6 +20,6 @@
     "static/js/runtime-main.30e15b0a.js",
     "static/js/2.4621c587.chunk.js",
     "static/css/main.521cd5db.chunk.css",
-    "static/js/main.03afc708.chunk.js"
+    "static/js/main.f12f0cad.chunk.js"
   ]
 }
