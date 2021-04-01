@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { login, signUp } from '../store/authentication';
 import styled, { keyframes } from 'styled-components';
 import SmokeText from './SmokeText';
+import { FiGithub, FiLinkedin } from 'react-icons/fi';
 import Warren from '../images/Warren.png';
 import DnS from '../images/DnS.png';
 import Login from '../images/Login.png';
@@ -9,12 +13,30 @@ import DungeonConstruction from '../images/DungeonConstruction.png';
 import underConstruction from '../images/underConstruction.png';
 import DungeonDemo from '../images/DungeonDemo.png';
 import { DungeonsAndSlack } from '../images/baseSixtyFour';
-import { FiGithub, FiLinkedin } from 'react-icons/fi';
 
 export default function Splash() {
   const [showIntro, setShowIntro] = useState(true);
   useEffect(() => void setTimeout(() => setShowIntro(false), 15000), []);
 
+  const [email, setEmail] = React.useState('demo@email.com');
+  const [password, setPassword] = React.useState('password');
+
+  const token = useSelector((state) => state.authentication.token);
+  const dispatch = useDispatch();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+
+    const res = dispatch(login(email, password));
+    if(!res.ok) {
+      setPassword('');
+      setEmail('');
+    };
+  };
+
+  if (token) {
+    return <Redirect to='/' />;
+  }
   return (
     <>
 
@@ -34,7 +56,7 @@ export default function Splash() {
         </TopBar>
         <Overlap src={DungeonConstruction} z={2} />
         <Overlap src={underConstruction} z={1} />
-        <Bounce>
+        <Bounce onClick={handleLogin} >
           <img src={DungeonDemo} />
         </Bounce>
         <BottomBar>
@@ -42,10 +64,10 @@ export default function Splash() {
             <img src={Warren} />
           </NavBox>
           <NavBox>
-            <Icon>
+            <Icon href="https://www.linkedin.com/in/warren-tamagri-5648a71ba/" target="_blank">
               <FiLinkedin size={'2.5em'} />
             </Icon>
-            <Icon>
+            <Icon href="https://github.com/tamagrijr" target="_blank">
               <FiGithub size={'2.5em'} />
             </Icon>
           </NavBox>
@@ -108,7 +130,7 @@ justify-content: space-between;
 align-items: center;
 padding: .5em;
 `;
-const Icon = styled.div`
+const Icon = styled.a`
 display: flex;
 flex-direction: row;
 justify-content: space-between;
