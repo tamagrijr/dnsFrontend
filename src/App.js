@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HashRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import SplashContainer from './components/splash/SplashContainer';
 import Splash from './components/Splash';
 import HomePageContainer from './components/home/HomePageContainer';
@@ -57,7 +57,7 @@ const App = ({ socket }) => {
 
   if (!loaded) return null;
   return (
-  <HashRouter>
+  <BrowserRouter>
     <SocketContext.Provider value={socket}>
         <Switch>
           <ProtectedRoute isLoggedIn={token} path='/' exact={ true } component={ HomePageContainer } />
@@ -65,7 +65,7 @@ const App = ({ socket }) => {
           <Route path='/*' exact={ true } component={ Splash } />
         </Switch>
     </SocketContext.Provider>
-  </HashRouter>
+  </BrowserRouter>
   )
 }
 
