@@ -1,11 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { HashRouter, Route, Switch } from 'react-router-dom';
-import SplashContainer from './components/splash/SplashContainer';
-import HomePageContainer from './components/home/HomePageContainer';
 import ProtectedRoute from './components/ProtectedRoute';
 import { loadToken } from './store/authentication';
 import { useSelector, useDispatch } from 'react-redux';
-import ProfileContainer from './components/profile/ProfileContainer'
 import { joinChannel } from './store/joinedChannels'
 import SocketContext from './socketContext'
 import { pushMessage } from './store/currentChat'
@@ -14,7 +11,10 @@ import useAsyncEffect from 'use-async-effect'
 import './index.css'
 
 import Splash from './components/Splash';
-import Profile from './components/Profile'
+import SplashContainer from './components/splash/SplashContainer';
+import Profile from './components/Profile';
+import ProfileContainer from './components/profile/ProfileContainer';
+import HomePageContainer from './components/home/HomePageContainer';
 
 const App = ({ socket }) => {
   const token = useSelector(state => state.authentication.token);
